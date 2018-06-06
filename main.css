@@ -1,0 +1,289 @@
+body {
+	background-color: #000;
+	margin: 0px;
+	overflow: hidden;
+}
+
+#brujula {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255 ,0.4);
+    margin:20px;
+    padding:0px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 100;
+}
+
+#sidebar {
+	height: 100%;
+	width:220px;
+	position: absolute;
+	background-color: white;
+	margin-left:-310px;
+	border-right-style: solid;
+	border-width: 4px;
+}
+
+.progress {
+    max-width: 84%;
+    text-align: center;
+    margin: auto;
+}
+		
+.tabs {
+	list-style-type: none;
+	margin: 0;
+	padding:0;
+	}
+	
+.tabs li{
+	position: absolute;
+	background-color: white;
+	border-radius: 0px 0px 5px 5px;
+	cursor: pointer;
+	width:100px;
+	height: 60px;
+	left:-10px;
+	padding: 20px;
+	transform: rotate(-90deg);
+}
+
+.tabs .active{
+	border-style: none solid solid;
+	border-width: 4px;
+	border-radius: 0px 0px 10px 10px;
+	z-index: 10;
+	height: 68px;
+}
+
+.tab__content{
+	background-color: white;
+	position: relative;
+	width: 100%;
+}	
+.tab_content li{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+		
+	display: none;
+	list-style: none;
+}
+		
+.content_wrapper{
+	text-align: center;
+	border-radius: 5px;
+	width: 100%;
+	padding: 45px 10px 10px 10px;
+	background-color: white;
+}
+
+
+.colors{
+	text-align: center;
+	padding-top: 20px;
+	padding-left: 5px;
+	line-height: 60px;
+}
+
+.colors li{
+		list-style: none;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		border-bottom: 5px solid rgba(0, 0, 0, .1);
+		display: inline-block;
+		margin: 0 10px;
+		cursor: pointer;
+		transition-duration: .2s;
+		box-shadow: 0 2px 1px rgba(0, 0, 0, .2);
+		position: relative;
+}		
+
+.colors > li:hover{
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+		border-bottom: 10px solid rgba(0, 0, 0, .15);
+		box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+}
+		
+.colors > li.active-color{
+		-webkit-transform: scale(1.2) translateY(-6px);
+		transform: scale(1.2) translateY(-6px);
+		box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+		border-bottom: 20px solid rgba(0, 0, 0, .15);
+}
+	
+.colors > li:nth-child(1){
+	background-color: #ffccff;
+}
+	
+.colors > li:nth-child(2){
+	background-color: #0000ff;
+}
+		
+.colors > li:nth-child(3){
+	background-color: #ff0000;
+}
+		
+.colors > li:nth-child(4){
+	background-color: #008000;
+}
+		
+.colors > li:nth-child(5){
+	background-color: #ffff00;
+}
+
+.colors > li:nth-child(6){
+	background-color: #ffa500;
+}
+
+.colors > li:nth-child(7){
+	background-color: #000000;
+}
+
+.colors > li:nth-child(8){
+	background-color: #00FFFF;
+}
+.colors > li:nth-child(9){
+	background-color: #ffffff;
+}
+.lines{
+	text-align: left;
+	padding: 0px;
+}
+
+.lines li{
+		list-style: none;
+		display: inline-block;
+		margin: 0 10px;
+		cursor: pointer;
+		position: relative;
+}		
+
+.icon_list{
+	text-align: left;
+	padding: 0px;
+}
+
+.icon_list li{
+		list-style: none;
+		display: inline-block;
+		margin: 0 10px;
+		cursor: pointer;
+		position: relative;
+}		
+
+
+.lines_wrapper {
+	padding: 20px 50px;
+}
+
+.icon_list_wrapper {
+	padding: 20px 50px;
+	max-height: 160px;
+	overflow-y: scroll;
+}
+
+.slide_wrapper {
+	padding: 20px 50px;
+}
+
+.button_wrapper {
+	padding: 30px 20px;
+	text-align: center;
+}
+
+/*ICONOS*/
+
+.icon {
+	list-style: none;
+	text-align: center;
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+.icon li {
+	position: relative;
+	display: inline-block;
+	margin-right: -4px;
+	padding-bottom: 10px;
+	width: 50%;
+        float: left;
+}
+
+.icon a {
+	display: block;
+	background-color: #f7f7f7;
+	color: #a7a7a7;
+	width: 65px;
+	height: 65px;
+	position: relative;
+	text-align: center;
+	margin: 4px;
+	cursor: pointer;
+	border-radius: 50%;
+	box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+}
+
+.icon a.active {
+	box-shadow: 2px 2px 6px 3px #e60000 inset;
+}
+
+.icon > li:nth-child(1) a{
+	background-image: url('../images/iconos/camion.png');
+	background-size: 50px 50px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.icon > li:nth-child(2) a{
+	background-image: url('../images/iconos/helicoptero.png');
+	background-size: 50px 50px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.icon > li:nth-child(3) a{
+	background-image: url('../images/iconos/observador.png');
+	background-size: 50px 50px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.icon > li:nth-child(4) a{
+	background-image: url('../images/iconos/pma.png');
+	background-size: 50px 50px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.icon > li:nth-child(5) a{
+	background-image: url('../images/iconos/reten.png');
+	background-size: 50px 50px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.icon > li:nth-child(6) a{
+	background-image: url('../images/iconos/todoterreno.png');
+	background-size: 50px 50px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.label {
+	padding: 2px;
+	text-shadow: -1px -1px #000, 0px -1px #FFF, 1px -1px #000, -1px 0px #000, 1px 0px #000, -1px 1px #000, 0px 1px #000, 1px 1px #000;
+	position: absolute;
+	pointer-events: none;
+}
+
+.zoom {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
