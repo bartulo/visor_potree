@@ -34,7 +34,6 @@ THREE.Compass.prototype = {
 		if (this.camera.rotation._x == 0) {
 			var rot = this.camera.rotation._z*(-1);	
 			this.elem.style.transform = 'rotate('+ (rot*(-1) + Math.PI) +'rad)';
-			console.log('j');
 		} else {
 			var rot = Math.atan2( vector.x, vector.y );
 			this.elem.style.transform = 'rotate('+ rot*(-1) +'rad)';

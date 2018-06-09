@@ -11,7 +11,7 @@ THREE.TerrainLoader = function ( manager ) {
 	this.res = '399';
 	this.size = '2000';
 	this.coordinates = '';
-	//~ this.scene = viewer.scene;
+	this.scene = viewer.scene.scene;
 
 };
 
@@ -88,8 +88,10 @@ THREE.TerrainLoader.prototype = {
 			plane = new THREE.Mesh(geometry, material);
 	
 			plane.position.set(self.coordinates[0], self.coordinates[1], self.coordinates[2]);
+			
+			viewer.scene.scene.add(plane);
 	
-			viewer.scene.scenePointCloud.add(plane);
+			self.scene.add(plane);
 			
 			console.log(plane.position)
 		});
