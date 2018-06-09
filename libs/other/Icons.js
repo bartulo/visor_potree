@@ -34,7 +34,6 @@ Potree.Icon = class Icon extends THREE.Object3D {
 		this.add(line);
 		
 		this.scale.set(15, 15, 15);
-		//~ this.position.set(coords.x, coords.y, coords.z + 10);
 		
 	}
 	
@@ -45,22 +44,74 @@ Potree.Icon = class Icon extends THREE.Object3D {
 		let insertionCallback = (e) => {
 			
 			if (e.button === THREE.MOUSE.LEFT) {
-			
-				let coords = Potree.utils.getMouseCoordinates(e);
-				this.position.set(coords.x, coords.y, coords.z + 100);
-				viewer.scene.scene.add(this);
 				
-				document.removeEventListener('mouseup', insertionCallback, true);
+				let coords = Potree.utils.getMouseCoordinates(e);
+				
+				if (coords) {
+					
+					console.log('ko');
+
+					this.init();
+					this.insertListElement();
+					
+					this.position.set(coords.x, coords.y, coords.z + 100);
+					viewer.scene.scene.add(this);
+					
+					$('.icon >li a').removeClass('active');
+					document.removeEventListener('mouseup', insertionCallback, true);
+				} else {
+					$('.icon >li a').removeClass('active');
+					document.removeEventListener('mouseup', insertionCallback, true);
+				}
+					
 				
 			} else if (e.button === THREE.MOUSE.RIGHT) {
 				
+				$('.icon >li a').removeClass('active');
 				document.removeEventListener('mouseup', insertionCallback, true);
 				
+			} else {
+				
+				$('.icon >li a').removeClass('active');
+				document.removeEventListener('mouseup', insertionCallback, true);
 			}
 				
 		}
 		
 		document.addEventListener('mouseup', insertionCallback, true);
+	}
+	
+	insertListElement () {
+		
+		let listElem = document.createElement('li');
+		$(listElem).addClass('list-group-item');
+		$(listElem).text(this.type);
+		let closeButton = document.createElement('button');
+		$(closeButton).text(' x');
+		closeButton.type = 'button';
+		$(closeButton).addClass('close');
+		$(listElem).append(closeButton);
+	
+		listElem.addEventListener('mouseover', this.hoverIcon.bind(this), false);
+		listElem.addEventListener('mouseout', this.unhoverIcon.bind(this), false);
+		closeButton.addEventListener('click', this.eraseIcon.bind(this), false);
+		
+		this.listElem = listElem;
+		$('.icon_list').append(listElem);
+
+	}
+	
+	hoverIcon () {
+		this.scale.set(20, 20, 20);
+	}
+	
+	unhoverIcon () {
+		this.scale.set(15, 15, 15);
+	}
+	
+	eraseIcon () {
+		viewer.scene.scene.remove(this);
+		$(this.listElem).remove();
 	}
 	
 	
@@ -71,9 +122,18 @@ Potree.utils.getMouseCoordinates = function(e) {
 	let renderer = viewer.renderer;
 	
 	let camera = viewer.scene.getActiveCamera();
+	let renderArea = $('#potree_render_area');
+	let isVisible = renderArea.css('left') !== '0px';
+	let xmod = null;
+
+	if (isVisible) {
+		xmod = e.clientX -  250;
+	} else {
+		xmod = e.clientX;
+	}
 	
 	let nmouse = {
-		x: (e.clientX / renderer.domElement.clientWidth) * 2 - 1,
+		x: (xmod  / renderer.domElement.clientWidth) * 2 - 1,
 		y: -(e.clientY / renderer.domElement.clientHeight) * 2 + 1
 	}
 	
@@ -84,6 +144,11 @@ Potree.utils.getMouseCoordinates = function(e) {
 	var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
 	
 	var intersects = ray.intersectObjects( viewer.scene.scene.children );
-	return intersects[0].point;
+	
+	if (intersects.length > 0) {
+		return intersects[0].point;
+	} else {
+		return null;
+	}
 
 }

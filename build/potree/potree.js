@@ -19692,7 +19692,7 @@ Potree.Viewer = class PotreeViewer extends THREE.EventDispatcher{
 		if (isVisible) {
 			renderArea.css('left', '0px');
 		} else {
-			renderArea.css('left', '300px');
+			renderArea.css('left', '250px');
 		}
 	};
 
@@ -19720,7 +19720,7 @@ Potree.Viewer = class PotreeViewer extends THREE.EventDispatcher{
 		let viewer = this;
 		let sidebarContainer = $('#potree_sidebar_container');
 		sidebarContainer.load(new URL(Potree.scriptPath + '/sidebar.html').href, () => {
-			sidebarContainer.css('width', '300px');
+			sidebarContainer.css('width', '250px');
 			sidebarContainer.css('height', '100%');
 
 			let imgMenuToggle = document.createElement('img');
@@ -19737,19 +19737,19 @@ Potree.Viewer = class PotreeViewer extends THREE.EventDispatcher{
 			viewer.renderArea.insertBefore(imgMapToggle, viewer.renderArea.children[0]);
 			viewer.renderArea.insertBefore(imgMenuToggle, viewer.renderArea.children[0]);
 
-			this.mapView = new Potree.MapView(this);
-			this.mapView.init();
+			//~ this.mapView = new Potree.MapView(this);
+			//~ this.mapView.init();
 
-			i18n.init({
-				lng: 'en',
-				resGetPath: Potree.resourcePath + '/lang/__lng__/__ns__.json',
-				preload: ['en', 'fr', 'de', 'jp'],
-				getAsync: true,
-				debug: false
-			}, function (t) {
-				// Start translation once everything is loaded
-				$('body').i18n();
-			});
+			//~ i18n.init({
+				//~ lng: 'en',
+				//~ resGetPath: Potree.resourcePath + '/lang/__lng__/__ns__.json',
+				//~ preload: ['en', 'fr', 'de', 'jp'],
+				//~ getAsync: true,
+				//~ debug: false
+			//~ }, function (t) {
+				//~ // Start translation once everything is loaded
+				//~ $('body').i18n();
+			//~ });
 
 			$(() => {
 				initSidebar(this);
@@ -19758,28 +19758,28 @@ Potree.Viewer = class PotreeViewer extends THREE.EventDispatcher{
 				//	$(callback);
 				//}
 
-				let elProfile = $('<div>').load(new URL(Potree.scriptPath + '/profile.html').href, () => {
-					$(document.body).append(elProfile.children());
-					this.profileWindow = new Potree.ProfileWindow(this);
-					this.profileWindowController = new Potree.ProfileWindowController(this);
+				//~ let elProfile = $('<div>').load(new URL(Potree.scriptPath + '/profile.html').href, () => {
+					//~ $(document.body).append(elProfile.children());
+					//~ this.profileWindow = new Potree.ProfileWindow(this);
+					//~ this.profileWindowController = new Potree.ProfileWindowController(this);
 
-					$('#profile_window').draggable({
-						handle: $('#profile_titlebar'),
-						containment: $(document.body)
-					});
-					$('#profile_window').resizable({
-						containment: $(document.body),
-						handles: 'n, e, s, w'
-					});
+					//~ $('#profile_window').draggable({
+						//~ handle: $('#profile_titlebar'),
+						//~ containment: $(document.body)
+					//~ });
+					//~ $('#profile_window').resizable({
+						//~ containment: $(document.body),
+						//~ handles: 'n, e, s, w'
+					//~ });
 
-					$(() => {
-						this.guiLoaded = true;
-						for(let task of this.guiLoadTasks){
-							task();
-						}
+					//~ $(() => {
+						//~ this.guiLoaded = true;
+						//~ for(let task of this.guiLoadTasks){
+							//~ task();
+						//~ }
 
-					});
-				});
+					//~ });
+				//~ });
 
 				
 
@@ -23086,13 +23086,13 @@ initSidebar = (viewer) => {
 	};
 
 	initAccordion();
-	initAppearance();
-	initToolbar();
-	initScene();
-	initNavigation();
-	initClassificationList();
-	initClippingTool();
-	initSettings();
+	//~ initAppearance();
+	//~ initToolbar();
+	//~ initScene();
+	//~ initNavigation();
+	//~ initClassificationList();
+	//~ initClippingTool();
+	//~ initSettings();
 	
 	$('#potree_version_number').html(Potree.version.major + "." + Potree.version.minor + Potree.version.suffix);
 	$('.perfect_scrollbar').perfectScrollbar();
