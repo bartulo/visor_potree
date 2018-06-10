@@ -35,8 +35,18 @@
 	<script src="libs/jstree/jstree.js"></script>
 	<script src="build/potree/potree.js"></script>
 	<script src="libs/plasio/js/laslaz.js"></script>
+	<script src='libs/other/lines/LineSegmentsGeometry.js'></script>
+	<script src='libs/other/lines/LineGeometry.js'></script>
+	<script src='libs/other/lines/WireframeGeometry2.js'></script>
+
+	<script src='libs/other/lines/LineMaterial.js'></script>
+
+	<script src='libs/other/lines/LineSegments2.js'></script>
+	<script src='libs/other/lines/Line2.js'></script>
+	<script src='libs/other/lines/Wireframe.js'></script>
 	<script src="libs/other/Icons.js"></script>
 	<script src="libs/other/Sidebar.js"></script>
+	<script src="libs/other/Paint.js"></script>
 	
 	<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
 	<!-- INCLUDE SETTINGS HERE -->
@@ -47,6 +57,12 @@
 	</div>
 
 	<script>
+		
+		var count = null;
+		var positions = [];
+		var colors = [];
+		var color = null;
+		var grosor = 8;
 	
 		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 		

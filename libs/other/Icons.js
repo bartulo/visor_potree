@@ -49,8 +49,6 @@ Potree.Icon = class Icon extends THREE.Object3D {
 				
 				if (coords) {
 					
-					console.log('ko');
-
 					this.init();
 					this.insertListElement();
 					
