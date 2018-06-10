@@ -13,7 +13,19 @@ $( document ).ready( function() {
 	}
 	
 	$('#sliderColor')[0].addEventListener( 'change', function(){ grosor = this.value }, false );
-
+	
+	viewer.scene.scenePointCloud.children[3].visible = false;
+	
+	$('#layer_selection').find('input').click( (e) => { 
+		if (e.target.value === 'mdt') {
+			console.log(e.target.parent);
+			viewer.scene.scene.children[3].visible = true;
+			viewer.scene.scenePointCloud.children[3].visible = false;
+		} else if ( e.target.value === 'lidar') {
+			viewer.scene.scene.children[3].visible = false;
+			viewer.scene.scenePointCloud.children[3].visible = true;
+		}
+	});
 });
 
 
